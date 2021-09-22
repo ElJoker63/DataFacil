@@ -1,0 +1,303 @@
+// JavaScript Document
+//解决 IE6 bind方法无效
+if (!Function.prototype.bind) {
+	Function.prototype.bind = function(obj) {
+		var slice = [].slice, args = slice.call(arguments, 1), self = this, nop = function() {
+		}, bound = function() {
+			return self.apply(this instanceof nop ? this : (obj || {}),
+			args.concat(slice.call(arguments)));
+		};
+		
+		nop.prototype = self.prototype;
+		 
+		bound.prototype = new nop();
+		 
+		return bound;
+	};
+}
+
+$(function(){
+	//search
+	var searchInput = $('.search input[name="s"]');
+	setInterval(function(){
+		if(searchInput.val() != '')
+			searchInput.css('background', 'none');
+		else
+			searchInput.attr('style') && searchInput.removeAttr('style');
+	}, 100);
+})
+var browserInfo = (function() {
+	var version = ["", ""],
+	browser = "unkonw",
+	agentInfo = navigator.userAgent.toLowerCase();
+	if (agentInfo.indexOf("trident/7.0") > -1) {
+		version = agentInfo.match(/rv:([\d]+)/);
+		browser = "ie"
+	}
+	if (agentInfo.match(/msie ([\d.]+)/)) {
+		version = agentInfo.match(/msie ([\d]+)/);
+		browser = "ie"
+	}
+	if (agentInfo.match(/firefox\/([\d.]+)/)) {
+		version = agentInfo.match(/firefox\/([\d]+)/);
+		browser = "firefox"
+	}
+	if (agentInfo.match(/chrome\/([\d.]+)/)) {
+		version = agentInfo.match(/chrome\/([\d]+)/);
+		browser = "chrome"
+	}
+	if (agentInfo.match(/opera.([\d.]+)/)) {
+		version = agentInfo.match(/opera.([\d]+)/);
+		browser = "opera"
+	}
+	if (agentInfo.match(/version\/([\d.]+).*safari/)) {
+		version = agentInfo.match(/version\/([\d]+).*safari/);
+		browser = "safari"
+	}
+	return {
+		'name': browser,
+		'version': version[1],
+		'ua': navigator.userAgent,
+		'plug': navigator.plugins
+	}
+})();
+
+//弹出窗口
+var i4popup = function(options){
+	var $this = this;
+	this.options = $.extend(true, {
+		'mask': {
+			'display': true
+		},
+		'content': {
+			'html': '',
+			'width': 600,
+			'height': 300,
+			'class': 'popup'
+		},
+		'close': {
+			'display': true,
+			'text': '&nbsp;'
+		},
+		'transitionTime': 300
+	}, options);
+	this.dom = $('<div></div>').attr({
+		'id': 'popup' + parseInt(Math.random() * 100000),
+		'class': this.options.content['class']
+	});
+	
+	this.show = function(){
+		if($this.options.mask.display)
+		{
+			i4popup.prototype.mask.show().css({
+				'height':$(document).height()
+			});
+			if(!(browserInfo.name== 'ie' && browserInfo.version == '6'))
+				i4popup.prototype.mask.animate({
+					'opacity': 1
+				}, $this.options.transitionTime);
+		}
+		$this.dom.show();
+		if(!(browserInfo.name== 'ie' && browserInfo.version == '6'))
+			$this.dom.animate({
+				'opacity': 1
+			}, $this.options.transitionTime);
+	};
+	this.hide = function(){
+		if($this.options.mask.display)
+		{
+			if(!(browserInfo.name== 'ie' && browserInfo.version == '6'))
+			{
+				i4popup.prototype.mask.animate({
+					'opacity': 0
+				}, $this.options.transitionTime);
+				setTimeout(function(){
+					i4popup.prototype.mask.hide();
+				}, $this.options.transitionTime)
+			}
+			else
+				i4popup.prototype.mask.hide();
+		}
+		if(!(browserInfo.name== 'ie' && browserInfo.version == '6'))
+		{
+			$this.dom.animate({
+				'opacity': 0
+			}, $this.options.transitionTime);
+			setTimeout(function(){
+				$this.dom.hide();
+			}, $this.options.transitionTime)
+		}
+		else
+			$this.dom.hide();
+	};
+	this.create = function(){
+		if(!(browserInfo.name== 'ie' && browserInfo.version == '6'))
+			$this.dom.css({
+				'opacity': 0,
+				'position': 'fixed'
+			})
+		else
+			$this.dom.css({
+				'position': 'absolute'
+			})
+		$this.dom.css({
+			'width': $this.options.content.width,
+			'height': $this.options.content.height,
+			'display': 'none',
+			'z-index': 9999,
+			'overflow': 'hidden'
+		});
+		if(typeof $this.options.content.html.show != 'undefined')
+			$this.options.content.html.show();
+		$this.dom.html($this.options.content.html);
+		$this.reset();
+		if($this.options.close.display)
+			$this.dom.append($('<a href="javascript:;" class="close"></a>').html($this.options.close.text).on
+('click', function(){
+				$this.hide();
+			}));
+	};
+	this.reset = function(){
+		$this.dom.css({
+			'left': ($(window).width() - $this.options.content.width) / 2,
+			'top': ($(window).height() - $this.options.content.height) / 2
+		})
+	};
+	this.init = function(){
+		$this.create();
+		$('body').append($this.dom);		
+		$(window).resize(function(){
+			$this.reset();
+		});
+		if(browserInfo.name=='ie' && browserInfo.version=='6')
+		{
+			$(window).scroll(function(e){
+				var st = $('body,html').scrollTop();
+				$this.dom.css({
+					'top': ($(window).height() - $this.options.content.height) / 2 + st
+				});
+			});
+		}
+	};
+	return this;
+};
+i4popup.prototype.mask = $('<div class="pngFix">&nbsp;</div>').attr('id', 'mask' + parseInt(Math.random
+() * 100000)).css({
+	'width': '100%',
+	'height': $(document).height(),
+	'background': !(browserInfo.name== 'ie' && (browserInfo.version == '6' || browserInfo.version == '7'
+ || browserInfo.version == '8')) ? 'rgba(0, 0, 0, 0.6)' : 'url(img/search_bg.png) repeat',
+	'display': 'none',
+	'z-index': 9998,
+	'position': 'absolute',
+	'left': 0,
+	'top': 0
+}).appendTo('body');
+if(!(browserInfo.name== 'ie' && browserInfo.version == '6'))
+	i4popup.prototype.mask.css({
+		'opacity': 0
+	})
+
+
+/*
+var i4inputHint = function(options){
+	var $this = this;
+	this.options = $.extend({
+		'hint': 'Message',
+		'hintColor': '#AAA',
+		'contentColor': '#333'
+	}, options, true);
+	
+	this.val = function(str){
+		if(typeof str != 'undefined')
+			return $this.options.dom.val(str);
+		if($this.options.dom.val() == $this.options.hint)
+			return '';
+		return $this.options.dom.val();
+	};
+	this.into = function(){
+		$this.options.dom.val('').css({
+				'color': $this.options.contentColor
+			});
+	};
+	this.out = function(){
+		$this.options.dom.val($this.options.hint).css({
+				'color': $this.options.hintColor
+			});
+	};
+	if(typeof $this.options.dom == 'undefined')
+		return $this;
+	if($this.options.dom.val() == '' || $this.options.dom.val() == $this.options.hint)
+		$this.out();
+	$this.options.dom.focus(function(){
+		if($this.options.dom.val() == $this.options.hint || $this.options.dom.val() == '')
+			$this.into();
+	}).blur(function(){
+		if($this.options.dom.val() == '')
+			$this.out();
+	});
+}*/
+
+
+
+
+var u3 = {
+	//提示
+	alert: function(content){
+		if($('.alert').length < 1)
+		{
+			$('body').append('<div class="alert">' +
+				'<div class="box">' +
+					'<div class="content"></div>' +
+					'<a href="javascript:;" class="close">确定</a>' +
+				'</div>' +
+			'</div>');
+			$('.alert .close').on('click', function(){
+				$('.alert').hide();
+			});
+		}
+		$('.alert > .box > .content').html(content);
+		$('.alert').show()
+	},
+	selects: [],
+	select: function(dom){
+		$.extend(true, this, dom);
+		this.optionsBox = dom.find('.options');
+		this.hideInput = dom.find('input');
+		this.title = dom.find('.title');
+		
+		this.on('click', function(even){
+			//关闭其它
+			dom.hasClass('ing') ? dom.removeClass('ing') : dom.addClass('ing');
+			$('.selectdown[name!="' + dom.attr('name') + '"]').removeClass('ing');
+			even.stopPropagation();
+			return false;
+		}.bind(this));
+		this.optionsBox.on('click', '.list', function(even){
+			this.title.html($(even.target).html());
+			this.hideInput.val($(even.target).attr('data-value'));
+			this.removeClass('ing');
+			$(even.target).addClass('ing').siblings().removeClass('ing');
+			this.selectOptionsBack(even);
+			return false;
+		}.bind(this));
+		this.selectOptionsBack = function(even){};
+		this.set = function(v){
+			this.optionsBox.find('.list[data-value="' + v + '"]').click();
+		}
+		$(document).on('click', function(even){
+			this.removeClass('ing');
+		}.bind(this));
+		//设置初始化选中
+		if(this.hideInput.val() !== '')
+			this.optionsBox.find('.list[data-value="' + this.hideInput.val() + '"]').click();
+	}
+};
+
+//应用下拉列表
+$.each($('.selectdown'), function(i, o){
+	if($(o).attr('name'))
+		u3.selects[$(o).attr('name')] = new u3.select($(o));
+	else
+		u3.selects.push(new u3.select($(o)));
+});

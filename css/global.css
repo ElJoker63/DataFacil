@@ -1,0 +1,282 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,
+samp,small,strike,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,
+aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}ol,ul{list-style:none}
+blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+input,textarea,select{margin:0;padding:0;font-size:100%;font:inherit;resize:none;outline:0}img{-webkit-tap-highlight-color:rgba(0,0,0,0);text-decoration:none}
+html { overflow-y:scroll }  
+body { background:#eee; font:13px/1.5 "Segoe UI", Segoe, Arial, sans-serif }
+body#index #nav_index,body#updateLog #nav_updateLog,body#tutorials #nav_tutorials,body#news #nav_news,body#firmwares #nav_firmwares { border-bottom:4px solid #eee; color:#000 }
+a { color:#333; text-decoration:none }
+a:hover { color:#007aff; text-decoration:none }
+.wrap { margin:0 auto; width:1200px; overflow:hidden }
+
+::selection { background:#ff6060; color:#fff }
+::-moz-selection { background:#ff6060; color:#fff }
+
+.placeholder { position:absolute; left:10px; top:10px; z-index:2; color:#AAA; }
+
+/* ====== public ======================================================================== */
+
+.selectdown { float:left; width:64px; height:30px; border:1px solid #bbb; position: relative; z-index: 4; cursor:pointer; }
+.selectdown:hover { background:#f4f4f4; }
+.selectdown > .title { width:100%; height:30px; line-height:30px; text-indent: 10px; }
+.selectdown > .arrows { position: absolute; right: 5px; top:50%; margin-top:-15px; width:15px; height:30px; background:url(../img/top_nav_sitemap_arrow.png) no-repeat left -22px; transition: all 0.2s; }
+.selectdown > .options { display:none; position:absolute; top:30px; left:-1px; z-index: 4; width:64px; border:1px solid #bbb; }
+.selectdown > .options > .list,
+.selectdown > .options > span { display:block; width:100%; height:32px; line-height:32px; background:#FFF; text-indent:10px; font-size:12px; color:#333; }
+.selectdown > .options > span { text-indent:10px; font-size:11px; color:#666; cursor:default; clear:both; }
+.selectdown > .options > .list:hover { background:#f2f2f2; }
+.selectdown > .options > .list.ing { background:#e6e6e6; }
+.selectdown.ing { background:#f4f4f4; }
+.selectdown.ing > .options { display: block; }
+.selectdown.ing > .arrows { background-position:left 13px; }
+
+/* ====== header ========== */
+.header { width:100%; height:98px; background:#fff; min-width:1200px; margin:auto; }
+.header > .wrap { overflow: visible; }
+.header .logo { float:left; width:260px; height:98px; overflow:hidden; }
+.header .logo > a { display:block; }
+/* nav */
+.header .nav  { float:left; width:600px }
+.header .nav a { display:block; float:left; margin:30px 17px 0; padding:0 3px; line-height:38px; font-size:14px; color:#666 }
+.header .nav a:hover { color:#007aff }
+.header .nav a.on { border-bottom:4px solid #eee; color:#000 }
+/* search */
+.header .search { float:right; padding-top:33px; width:330px; height:65px }
+.header .search .selectdown { border-right:0; width:85px; }
+.header .search .selectdown  > .options { width:85px; }
+.header .search input { float:left; padding:5px; width:179px; height:20px; line-height:20px; border:1px solid #bbb; background:url(../img/header_search_icon.png) no-repeat; _background:none }
+.header .search input:focus { background:#f8f8f8 }
+.header .search a     { display:block; float:left; margin-left:-1px; width:48px; height:30px; border:1px solid #bbb; font-size:12px; line-height:30px; text-align:center; transition:0.2s }
+.header .search a:hover { background:#eee }
+
+/* ====== footer ========== */
+.footer { width:100%; height:180px; background:#007aff; min-width:1200px; margin:auto; margin-top:30px; }
+.footer .wrap  { height:80px }
+.footer .left  { float:left; padding-top:27px; height:52px; width:300px; color:#d4e2ff }
+.footer .left p, .footer .left a { display:block; float:left; height:26px; line-height:26px; transition:0.3s }
+.footer .left a.facebook { width:24px; background:url(../img/footer_facebook.png)} .footer .left a.facebook:hover { width:24px; background:url(../img/footer_facebook.png) bottom }
+.footer .left a.twitter  { width:32px; background:url(../img/footer_twitter.png) } .footer .left a.twitter:hover  { width:32px; background:url(../img/footer_twitter.png) bottom }
+.footer .left a.google   { width:42px; background:url(../img/footer_google.png)  } .footer .left a.google:hover   { width:42px; background:url(../img/footer_google.png) bottom }
+.footer .link  { float:left; padding-top:28px; width:600px; text-align:center }
+.footer .link a  { display:inline-block; padding:0 16px; line-height:24px; color:#e6eeff; font-family:"Segoe UI Semibold","Segoe UI", Segoe, Arial, sans-serif }
+.footer .link a:hover  { background:#1b88ff; color:#fff }
+.footer .right { float:left; height:80px; width:300px; line-height:80px; text-align:right; color:#d4e2ff }
+.footer .slogan { padding-top:25px; border-top:3px solid #0d81ff; line-height:24px; text-align:center; color:#b8d0ff }
+
+/* ====== caption ========== */
+.caption { overflow:hidden; width:100%; height:51px; line-height:51px; background:#007aff; text-align:center; font-size:14px; color:#fff; min-width:1200px; margin:auto; }
+.caption a { display:inline-block; padding:0 25px; line-height:51px; text-align:center; color:#b5d8ff}
+.caption a:hover { background:#0e81ff; color:#b5d8ff }
+.caption a.caption_on{ background:#228cff; color:#fff; font-weight:bold }
+
+/* ====== home ======================================================================== */
+/* ====== home, banner ========== */
+.banner { padding-top:320px; width:100%; min-width:1200px; height:440px; background:#4ca2ff url(../img/banner_3ulogo.png?v=001) top center no-repeat; text-align:center }
+.banner .wrap { height:440px; background:url(../img/banner_bg.png?v=001)}
+.banner h1 { margin-top:80px; line-height:52px; font-size:20px; color:#d5e3ff }
+.banner h2 { margin-bottom:30px; line-height:100px; font-size:62px; color:#fff; font-weight:bold }
+.banner a  { display:block; margin:0 auto; width:216px; height:48px; border:2px solid #83bfff; border-radius:26px; line-height:48px; font-size:20px; color:#fff; transition:0.2s }
+.banner a:hover  { border:2px solid #fff; background:#fff; color:#007aff }
+.banner p  { margin-top:34px; color:#d5e3ff }
+.banner p span { margin:0 10px; color:#5399ff }
+
+/* ====== home, content ========== */
+.home_content { background:#fff }
+.home_content section { position:relative }
+.home_content section h1 { padding-top:96px; line-height:74px; text-align:center; font-size:34px; font-family:"Segoe UI Light","Segoe UI", Segoe, Arial, sans-serif }
+.home_content section p  { line-height:26px; text-align:center; font-size:15px; color:#555 }
+/* manag */
+.manag { height:500px }
+.manag div { margin-top:35px; text-align:center }
+.manag div a { display:inline-block; padding:20px 0 15px; width:90px; height:90px; transition:0.3s; text-align:center }
+.manag div a:hover { width:120px; background:#f6f6f6 }
+.manag div a span  { display:block; width:100%; height:26px; line-height:26px; font-size:12px; color:#999; transition:0.2s }
+.manag div a:hover span  { color:#333 }
+/* store */
+.store { height:540px; background:url(../img/home_store_bg.png)  }
+.store img { position:absolute; left:50%; bottom:0; margin-left:-490px; width:980px; height:320px }
+/* flash */
+.flash { height:830px }
+.flash img { position:absolute; left:50%; bottom:0 }
+.flash_img_01 { margin-left:-175px }
+.flash_img_02 { margin-left:-324px }
+.flash_img_03 { margin-left:132px }
+/* tools */
+.tools { margin-top:-160px; height:760px; background:url(../img/home_tools_bg.png) }
+.tools div { margin:45px auto 0; width:830px; overflow:hidden }
+.tools div a { display:block; _display:inline; float:left; margin:0 18px 6px; width:102px; height:130px; background:none; text-align:center; transition:0.2s }
+.tools div a:hover { background:#e9e9e9; color:#000 }
+.tools div img { margin:24px auto 0; display:block; }
+.tools div span{ display:block; height:32px; line-height:32px; font-size:12px }
+
+/* ====== updatelog ======================================================================== */
+.updatelog { margin-top:20px }
+.updatelog .wrap { padding:36px 0 100px; background:#fff; _border-top:30px solid #fff; }
+.updatelog section { margin:38px auto 0; width:980px }
+.updatelog section h1 span { padding-left:10px; line-height:40px; font-size:16px; font-family:"Segoe UI Semibold","Segoe UI", Segoe, Arial, sans-serif }
+.updatelog section h1 a    { margin-left:25px; font-size:13px; color:#007aff; text-decoration:underline }
+.updatelog section h1 a:hover { text-decoration:none }
+.updatelog section div { padding:30px; background:#f8f8f8; line-height:24px; color:#555 }
+.updatelog section div:hover { background:#eee }
+
+/* ====== article ======================================================================== */
+.article { margin-top:20px }
+.article .wrap { padding:50px 0 100px; background:#fff }
+.article section { margin:20px auto 0; width:980px; height:140px; border-bottom:1px solid #eee }
+.article_section_txt { float:left; width:800px }
+.article_section_txt h1 a { line-height:40px; font-size:15px; font-weight:normal; font-family:"Segoe UI Semibold","Segoe UI", Segoe, Arial, sans-serif }
+.article_section_txt p { display:block; width:100%; height:36px; line-height:18px; font-size:14px; color:#888; overflow:hidden }
+.article_section_txt div { margin-top:20px; line-height:20px; font-size:12px; overflow:hidden }
+.article_section_txt div span { display:block; float:left; margin-right:25px; color:#bbb }
+.article_section_txt div span.time { padding-left:16px; background:url(../img/article_icon_time.png) no-repeat 0 5px }
+.article_section_txt div span.view { padding-left:20px; background:url(../img/article_icon_view.png) no-repeat 0 5px }
+.article_section_img { display:block; float:right; width:150px; height:120px }
+.article section .noimg { width:980px }
+
+/* ====== news ======================================================================== */
+.news .outwidth { width:1240px; overflow:hidden }
+.news section { float:left; margin:20px 20px 0 0; padding:20px; width:245px; height:366px; background:#fff; overflow:hidden }
+.news section:hover { background:#f8f8f8 }
+.news section h1 { display:block; margin-top:11px; height:40px; line-height:20px; font-size:14px; font-weight:normal; font-family:"Segoe UI Semibold","Segoe UI", Segoe, Arial, sans-serif; overflow:hidden; }
+.news section p  { display:block; margin-top:11px; height:72px; line-height:18px; font-size:13px; color:#888; overflow:hidden; }
+.news section div{ margin-top:14px; line-height:20px; color:#bbb }
+.news section div span.time { display:block; float:left;  padding-left:16px; background:url(../img/article_icon_time.png) no-repeat 0 5px }
+.news section div span.view { display:block; float:right; padding-left:20px; background:url(../img/article_icon_view.png) no-repeat 0 5px }
+
+/* ====== article_content ======================================================================== */
+.article_content { margin-top:20px }
+.article_content .wrap { background:#fff }
+.article_content .wrap > section { width:800px; margin:80px auto 60px }
+.article_content .wrap > section h1 { line-height:30px; font-size:26px; text-align:center }
+.article_content .wrap > section .info { margin-top:30px; line-height:20px; font-size:12px; text-align:center }
+.article_content .wrap > section .info span { display:inline-block; margin:0 12px; color:#999 }
+.article_content .wrap > section .info span.time { padding-left:16px; background:url(../img/article_icon_time.png) no-repeat 0 5px }
+.article_content .wrap > section .info span.view { padding-left:20px; background:url(../img/article_icon_view.png) no-repeat 0 5px }
+.article_content .wrap > section .edit { padding:50px 0; line-height:1.4; font-size:16px }
+.article_content .wrap > section .share{ padding-top:20px; text-align:center }
+.article_content .wrap > section .share a { display:inline-block; margin:0 4px; width:36px; height:36px }
+.article_content .wrap > section .share a.facebook{ display:inline-block; background:url(../img/share_facebook.png) bottom }
+.article_content .wrap > section .share a.twitter { display:inline-block; background:url(../img/share_twitter.png) bottom }
+.article_content .wrap > section .share a.google  { display:inline-block; background:url(../img/share_google.png) bottom }
+.article_content .wrap > section .share a.facebook:hover{ background:url(../img/share_facebook.png) }
+.article_content .wrap > section .share a.twitter:hover { background:url(../img/share_twitter.png) }
+.article_content .wrap > section .share a.google:hover  { background:url(../img/share_google.png) }
+.article_content .wrap > section .aside { padding-top:60px; height:340px; text-align:center }
+.article_content .wrap > section .aside dt { height:70px }
+.article_content .wrap > section .aside dt p { display:block; float:left; width:200px; height:20px; line-height:20px; background:#fff; font-size:24px }
+.article_content .wrap > section .aside dt span { display:block; float:left; margin-top:10px; width:300px; height:1px; background:#e9e9e9; overflow:hidden }
+.article_content .wrap > section .aside dd { }
+.article_content .wrap > section .aside dd a { display:block; width:100%; line-height:32px; color:#666; font-size:14px }
+.article_content .wrap > section .aside dd a:hover { background:#f8f8f8; color:#007aff }
+
+/* ====== about, legal statement, disclaimer ======================================================================== */
+.about { margin-top:20px }
+.about .wrap { background:#fff }
+.about_3utools { padding:110px 0 90px; text-align:center }
+.about_3utools h1 { line-height:110px; font-weight:normal; font-size:36px; font-family:"Segoe UI Light","Segoe UI", Segoe, Arial, sans-serif }
+.about_3utools p  { line-height:22px; font-size:17px; color:#444 }
+.about_contact { text-align:center }
+.about_contact h1 { font-size:36px; font-weight:normal; font-family:"Segoe UI Light","Segoe UI", Segoe, Arial, sans-serif }
+.about_contact h2 { font-size:32px; font-weight:normal; font-family:"Segoe UI Light","Segoe UI", Segoe, Arial, sans-serif; margin-bottom:20px }
+.about_contact p  { font-size:16px; line-height:26px; color:#444 }
+.about_contact a  { color:#007aff }
+.about_contact a:hover { color:#000; text-decoration:underline }
+.about_contact_link { padding-bottom:10px }
+.about_feedback { padding:30px 0 110px;  text-align:center; }
+.about_feedback h1  { line-height:110px; font-weight:normal; font-size:36px; font-family:"Segoe UI Light","Segoe UI", Segoe, Arial, sans-serif }
+.about_feedback div { margin:0 auto; width:840px; overflow:hidden; }
+.about_feedback div p { overflow:hidden; position:relative; margin:0; float:left; padding:0 10px; margin-bottom:20px; }
+.about_feedback div p .placeholder { padding-left:10px; }
+.about_feedback div input { padding:0 10px; width:380px; height:40px; line-height:40px; border:none; background:#f4f4f4; }
+.about_feedback div textarea { padding:10px; width:800px; height:100px; border:none; background:#f6f6f6; overflow-y:auto; color:#666; }
+.about_feedback div a { clear:both; display:block; margin:20px auto 0; width:200px; height:46px; background:#eee; line-height:46px; text-align:center; font-size:16px }
+.about_feedback div a:hover { background:#ddd; color:#000 }
+.about_feedback div textarea:hover, .about_feedback div input:hover { background:#f0f0f0 }
+
+
+.about_statement { margin:0 auto; padding:90px 0 100px; width:820px }
+.about_statement div { margin-bottom:25px }
+.about_statement h1 { margin-bottom:25px; font-size:28px; line-height:52px; border-bottom:5px solid #eee; color:#000; font-weight:normal  }
+.about_statement p.title { font-size:24px; line-height:48px; border-bottom:1px solid #e3e3e3; color:#000; font-weight:normal; font-family:"Segoe UI Light","Segoe UI", Segoe, Arial, sans-serif  }
+.about_statement p  { padding:5px 0; font-size:15px; color:#666  }
+.about_statement dl { padding:10px 0 0 20px; font-size:14px }
+.about_statement dt { color:#666 }
+.about_statement dd { margin-bottom:5px; color:#999 }
+
+
+@media screen and (max-width:1024px){
+.wrap { width:980px }
+.header { min-width:980px; }
+.header .logo  { width:200px }
+.header .nav   { width:540px }
+.header .nav a { margin:30px 12px 0 }
+.banner { min-width:980px; }
+.banner h2 { font-size:58px }
+.footer { min-width:980px; }
+.footer .left  { width:250px }
+.footer .link  { width:480px}
+.footer .right { width:250px }
+
+.caption { min-width:980px; }
+
+/* updatelog and tutorials */
+.updatelog .wrap section, .article .wrap section { width:820px }
+/* tutorials */
+.article_section_txt { width:650px }
+.article section .noimg { width:820px }
+/* news */
+.news .outwidth { width:1010px; overflow:hidden }
+.news section { margin:20px 22px 0 0; padding:20px; width:272px; height:370px }
+.news section img { width:272px; height:218px }
+.news section p   { height:54px }
+}
+
+/* ====== ie6 exclusive ======================================================================== */
+.wrap { _width:980px }
+.header .logo  { _width:200px }
+.header .nav   { _width:540px }
+.header .nav a { _margin:30px 12px 0 }
+.banner h2 { _font-size:58px }
+.footer .left  { _width:250px }
+.footer .link  { _width:480px}
+.footer .right { _width:250px }
+
+.updatelog .wrap section, .article .wrap section { _width:820px }
+/* tutorials */
+.article_section_txt { _width:650px }
+.article section .noimg { _width:820px }
+/* news */
+.news .outwidth { _width:1010px; _overflow:hidden }
+.news section { _margin:20px 22px 0 0; _padding:20px; _width:272px; _height:370px }
+.news section img { _width:272px; _height:218px }
+.news section p   { _height:54px }
+
+
+.about_feedback_pop { padding-top:50px; background:#fff; text-align:center; height:130px; display:none; overflow:hidden; }
+.about_feedback_pop p { font-size:16px; font-weight:bold }
+.feedback_popup { border:5px solid #eee; }
+.popup-close { display:block; margin-left:50%; position:absolute; bottom:30px; left:-50px; text-align:center; width:100px; height:32px; line-height:32px; border:1px solid #ddd; color:#333 }
+.popup-close:hover { background:#f4f4f4 }
+textarea { font-family:'Segoe UI Semibold', "Segoe UI", Arial, sans-serif; }
+.popup-main { position:absolute; display:none; z-index:9; overflow:hidden; left:50%; border:5px solid #ddd; }
+
+
+.error-404 { width:1200px; background:#FFF; margin:105px auto 20px; padding:200px 0 280px; }
+.error-404 img { margin:auto; display:block; }
+.error-404 .error-text { line-height:60px; font-size:18px; text-align:center; }
+.error-404 .error-text a { color:#236ee7; text-decoration:underline; }
+
+.totop { position:fixed; right:20px; bottom:-100px; display:block; _display:none; width:40px; height:40px; opacity: 0; transition:0.5s; background:url(../img/totop.png) no-repeat; }
+.totop.active { bottom:20px; opacity: 1; }
+.totop.active-b { bottom:210px; }
+
+.paging { width: 100%; height:32px; overflow: hidden; padding:20px 0 30px; clear: both; }
+.paging a,
+.paging span { display:block; float:left; padding:0 17px; height:32px; line-height:32px; margin-right:2px; background:#f2f2f2; }
+.paging a { color:#444; }
+.paging a:hover { background:#ddd; }
+.paging span { color:#BBB; }
+.paging a.paging_on { color:#FFF; background:#666; }
+.paging .acme { width:70px; padding:0; text-align: center; }
