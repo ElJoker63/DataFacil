@@ -7,10 +7,9 @@ out/
 *.rar
 
 ### Composer ###
-composer.json
-composer.phar
-composer.lock
-vendor/
+#composer.phar
+#composer.lock
+#vendor/
 
 # Mac OS
 .DS_Store
