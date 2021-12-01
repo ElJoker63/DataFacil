@@ -1,1 +1,1 @@
-worker: php composer
+worker: php
