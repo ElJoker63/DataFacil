@@ -65,9 +65,9 @@
 <div class="slider-inner text-right">
   <img src="assets/img/icon/icon.png" width="100px">
 <h2>DataFacil</h2>
-<h6 style="color: white;">Version: 7.1</h6>
-<h6 style="color: white;">Rev: 211128</h6>
-<h6 style="color: white;">Tamaño: 4.80Mb</h6>
+<h6 style="color: white;">Version: 7.2</h6>
+<h6 style="color: white;">Rev: 211227</h6>
+<h6 style="color: white;">Tamaño: 4.66Mb</h6>
 <h5>Tu mejor herramienta</h5>
 <a href="DataFacil.apk" style="background-color: white;color: #5c1ef9;"><i class="fa fa-download" style="color: #5c1ef9;"></i>Descargar APK</a>
 </div>
