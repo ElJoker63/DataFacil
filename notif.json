@@ -1,7 +1,6 @@
 {
   "notification": {
-    "acive": "yes",
     "titulo": "INFORMACION",
-    "mensaje": ""
+    "mensaje": "Gracias por utilizar nuestra aplicación"
   }
 }
