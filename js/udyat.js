@@ -14,16 +14,16 @@ async function getDets() {
     let ranIndex = Math.floor(Math.random() * resData.results.length)
     let movie = resData.results[ranIndex]
     movieDets.innerHTML = `
-    <h3>Must-see blockbuster film!</h3>
-    <h4><span>Title:</span> ${movie.title}</h4>
-                        <h4><span>movie overview:</span> ${movie.overview}</h4>
-                        <h4><span>Release Date:</span> ${movie.release_date}</h4>
-                        <h4><span>Rating:</span> ${movie.vote_average.toFixed(1)} / 10</h4>
+    <h3>¡Película de gran éxito que hay que ver!</h3>
+    <h4><span>Titulo:</span> ${movie.title}</h4>
+                        <h4><span>Resumen de la película:</span> ${movie.overview}</h4>
+                        <h4><span>Fecha de lanzamiento:</span> ${movie.release_date}</h4>
+                        <h4><span>Calificación:</span> ${movie.vote_average.toFixed(1)} / 10</h4>
     `
     movieDetsMini.innerHTML = `
-                <h3><span>Title:</span> ${movie.title}</h3>
-                <h3><span>Release Date:</span> ${movie.release_date}</h3>
-                <h3><span>Rating:</span> ${movie.vote_average.toFixed(1)} / 10</h3>
+                <h3><span>Titulo:</span> ${movie.title}</h3>
+                <h3><span>Fecha de lanzamiento:</span> ${movie.release_date}</h3>
+                <h3><span>Calificación:</span> ${movie.vote_average.toFixed(1)} / 10</h3>
         `
     img.src = `https://image.tmdb.org/t/p/w1280/${movie.poster_path}`
     movieCont.style.backgroundImage = `url(https://image.tmdb.org/t/p/w1280/${movie.backdrop_path})`;
